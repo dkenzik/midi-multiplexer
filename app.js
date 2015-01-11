@@ -104,7 +104,6 @@ input.on('message', function(deltaTime, message) {
       if(map.in.type == type && map.in.type=='note' && map.in.channel == channel && map.in.value[0] == message[1] && map.in.value[1] == message[2] ) {
         console.log('Trigger Found: Channel ' + channel + ', Message: ' + type + ' ' + message[1] + ' ' + message[2]);
         _.forEach(map.out,function(o) {
-          console.log("Type: " + o.type);
 	  if(o.type == 'note') {
             statusByte = 0x90 + o.channel - 1;
             output.sendMessage([statusByte,o.value[0],o.value[1]]);
