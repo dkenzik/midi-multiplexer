@@ -2,51 +2,52 @@ var _ = require('lodash');
 var midi = require('midi');
 
 var inPort = 9;
-var outPort = 3;
+var outPort = 20;
 var maps = [
   // PLAY ALL
   {    // {channel, cc, val}
-    "in": { type: 'note', channel: 1, value: [126,127] }, 
-    "out": [ { type: 'note', channel: 1, value: [12,127] }, 
-             { type: 'note', channel: 1, value: [22,127] },
-             { type: 'note', channel: 1, value: [32,127] },
-             { type: 'note', channel: 1, value: [42,127] },
-             { type: 'note', channel: 1, value: [52,127] },
-             { type: 'note', channel: 1, value: [62,127] },
-             { type: 'note', channel: 1, value: [72,127] },
-             { type: 'note', channel: 1, value: [82,127] },]
+    "in": { type: 'note', channel: 12, value: [126,127] }, 
+    "out": [ { type: 'note', channel: 12, value: [12,127] }, 
+             { type: 'note', channel: 12, value: [22,127] },
+             { type: 'note', channel: 12, value: [32,127] },
+             { type: 'note', channel: 12, value: [42,127] },
+             { type: 'note', channel: 12, value: [52,127] },
+             { type: 'note', channel: 12, value: [62,127] },
+             { type: 'note', channel: 12, value: [72,127] },
+             { type: 'note', channel: 12, value: [82,127] },]
   },
   // STOP ALL, RESET TRANSPORT, SELECT LOOPBUS
   {    // {channel, cc, val}
-    "in": { type: 'note', channel: 1, value: [127,127] },
-    "out": [ { type: 'note', channel: 1, value: [18,127] },
-             { type: 'note', channel: 1, value: [28,127] },
-             { type: 'note', channel: 1, value: [38,127] },
-             { type: 'note', channel: 1, value: [48,127] },
-             { type: 'note', channel: 1, value: [58,127] },
-             { type: 'note', channel: 1, value: [68,127] },
-             { type: 'note', channel: 1, value: [78,127] },
-             { type: 'note', channel: 1, value: [88,127] },
-             { type: 'note', channel: 1, value: [124,127] }, // stop
-             { type: 'note', channel: 1, value: [124,127] }, // stop
-             { type: 'cc', channel: 1, value: [50,0] }, // select lp1
-             { type: 'note', channel: 1, value: [99,127] },] // select track
+    "in": { type: 'note', channel: 12, value: [127,127] },
+    "out": [ { type: 'note', channel: 12, value: [18,127] },
+             { type: 'note', channel: 12, value: [28,127] },
+             { type: 'note', channel: 12, value: [38,127] },
+             { type: 'note', channel: 12, value: [48,127] },
+             { type: 'note', channel: 12, value: [58,127] },
+             { type: 'note', channel: 12, value: [68,127] },
+             { type: 'note', channel: 12, value: [78,127] },
+             { type: 'note', channel: 12, value: [88,127] },
+             { type: 'note', channel: 12, value: [124,127] }, // stop
+             { type: 'cc', channel: 12, value: [50,0] }, // select lp1
+             { type: 'note', channel: 12, value: [99,127] }, // select loopbus
+             { type: 'note', channel: 12, value: [124,127] }] // stop
   },
   // CLEAR ALL, RESET TRANSPORT, SELECT LOOPBUS
   {    // {channel, cc, val}
-    "in": { type: 'note', channel: 1, value: [125,127] },
-    "out": [ { type: 'note', channel: 1, value: [19,127] },
-             { type: 'note', channel: 1, value: [29,127] },
-             { type: 'note', channel: 1, value: [39,127] },
-             { type: 'note', channel: 1, value: [49,127] },
-             { type: 'note', channel: 1, value: [59,127] },
-             { type: 'note', channel: 1, value: [69,127] },
-             { type: 'note', channel: 1, value: [79,127] },
-             { type: 'note', channel: 1, value: [89,127] },
-             { type: 'note', channel: 1, value: [124,127] },
-             { type: 'note', channel: 1, value: [124,127] },
-             { type: 'cc', channel: 1, value: [50,0] }, // select lp1
-             { type: 'note', channel: 1, value: [99,127] },]
+    "in": { type: 'note', channel: 12, value: [125,127] },
+    "out": [ { type: 'note', channel: 12, value: [19,127] },
+             { type: 'note', channel: 12, value: [29,127] },
+             { type: 'note', channel: 12, value: [39,127] },
+             { type: 'note', channel: 12, value: [49,127] },
+             { type: 'note', channel: 12, value: [59,127] },
+             { type: 'note', channel: 12, value: [69,127] },
+             { type: 'note', channel: 12, value: [79,127] },
+             { type: 'note', channel: 12, value: [89,127] },
+             { type: 'note', channel: 12, value: [124,127] }, //stop transport
+             { type: 'note', channel: 12, value: [124,127], delay: 100 }, //stop transport
+             { type: 'cc', channel: 12, value: [50,0] }, // select lp1
+             { type: 'note', channel: 12, value: [99,127] }, // select loopbus
+             { type: 'note', channel: 12, value: [124,127] }] // stop transport
   },
 
 ];
