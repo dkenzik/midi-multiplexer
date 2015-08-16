@@ -1,8 +1,8 @@
 var _ = require('lodash');
 var midi = require('midi');
 
-var inPort = 9;
-var outPort = 20;
+var inPort = 10;
+var outPort = 3;
 var maps = [
   // PLAY ALL
   {    // {channel, cc, val}
